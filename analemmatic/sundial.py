@@ -70,7 +70,7 @@ class Sundial(object):
         self.draw_time_tics()
         self.draw_shadow(day, hour)
 
-    def draw(self, day, hour):
+    def draw(self, day=None, hour=None):
         fig, self.ax = plt.subplots(1, 1, figsize=(8, 8))
         fig.suptitle('Analemmatic Sundial', fontsize=14, fontweight='bold')
         self.ax.set_title('(${:6.1f}^\circ$,${:6.1f}^\circ$,{:6.1f}m) {}'.format(self.latitude, self.longitude,
@@ -83,7 +83,8 @@ class Sundial(object):
         self.draw_eclipse()
         self.draw_gnomon_offsets()
         self.draw_time_tics()
-        self.draw_shadow(day, hour)
+        if day:
+            self.draw_shadow(day, hour)
 
     def show(self):
         plt.show()
@@ -212,6 +213,10 @@ if __name__ == '__main__':
         for h in range(14):
             sundial.add(d, 6+h)
     """
+
+    """
     for m in range(24*60):
         sundial.add(360, m/60.)
+    """
+    sundial.draw()
     sundial.show()

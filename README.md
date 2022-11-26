@@ -30,27 +30,18 @@ If we want to compare mean solar time to local standard time, we must account fo
 
 Timezones define a uniform civil time over regions with a width of roughly 15 degrees
 of longitude. The standard time of a time zone is defined by its standard meridian, which is any longitude
-that is a multiple of 15 degrees. For CST, the standard meridian is -75 degrees, which results in a 5-hour
-offset from UT. In the western hemisphere, every degree of longitude west of the standard meridian results in
+that is a multiple of 15 degrees. For CST, the standard meridian is -90 degrees, which results in a -6-hour
+offset from UT. Every degree of longitude away from the standard meridian results in
 a 4-minute difference between local standard time and mean solar time. 
 
 Some timezones adjust the time by as much as an hour at certain times of year.
 Daylight savings time (DST) in the US currently runs from 2:00am local time on the
 second Sunday of March to 2:00am local time on the first Sunday of November, covering
-34 weeks of the year. 
+34 weeks of the year. CDT has a utc offset of -5 hours.
 
 We can account for longitude in the construction of the sundial so that its dial reads 
-local standard time up to corrections due to the EoT and DST. There is no perfect way to deal with DST.
-We can pick standard time, daylight time, or some value inbetween. For example, US central time has
-an average UTC offset of -5h20m46s accounting for DST.
+local standard time up to corrections due to the EoT and DST. Along with the dial, a table or plot
+of corrections can be included.
 
+<img src="docs/source/_static/sundial.png" width="500" alt="equation of time">
 
-We can easily calculate the position of the sun at a given utc. This can be either HA-Dec or Az-Alt.
-What we really want to know is at what utc the sun will have a given local position. For instance,
-what utc time is local solar noon on May 1, 2023? 
-
-So we work in mean solar time. To convert to utc we need to know:
-1. longitude
-2. timezone
-
-and once we have utc, we can get the actual position of the Sun. 
